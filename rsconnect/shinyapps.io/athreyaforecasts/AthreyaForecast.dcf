@@ -1,0 +1,13 @@
+name: AthreyaForecast
+title: AthreyaForecast
+username:
+account: athreyaforecasts
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7506206
+bundleId: 6487595
+url: https://athreyaforecasts.shinyapps.io/AthreyaForecast/
+when: 1667884347.43781
+lastSyncTime: 1667884347.43783
+asMultiple: FALSE
+asStatic: FALSE
