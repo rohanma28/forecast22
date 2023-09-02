@@ -14,7 +14,8 @@ rownames(weights) <- weights[,1]
 polls["POLLSTER"][polls["POLLSTER"] == "Fabrizio Lee & Associates"] <- "Fabrizio, Lee & Associates"
 polls[is.na(polls)] <- 0
 polls[,"END"] <- as.Date(c(polls[,"END"]), "%m/%d/%y")
-polls$ELAPSED <- as.integer(Sys.Date() - polls$END)
+midtermdate <- as.Date("2022-11-08")
+polls$ELAPSED <- as.integer(midtermdate - polls$END)
 polls$RECWGT <- 100 * ((0.9361) ^ polls$ELAPSED)
 polls$BIAS <- 0
 for (i in 1:nrow(polls)) {
@@ -76,7 +77,7 @@ gbweights <- read.csv('/data/raw/gbweights.csv')
 rownames(genbalbias) <- c(genbalbias[,1])
 rownames(gbweights) <- gbweights[,1]
 genbal[,"END"] <- as.Date(c(genbal[,"END"]), "%m/%d/%y")
-genbal$ELAPSED <- as.integer(Sys.Date() - genbal$END)
+genbal$ELAPSED <- as.integer(midtermdate - genbal$END)
 genbal$RECWGT <- 100 * ((0.9361) ^ genbal$ELAPSED)
 genbal$BIAS <- 0
 for (i in 1:nrow(genbal)) {

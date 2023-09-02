@@ -83,6 +83,8 @@ for (i in 1:length(pollster)) {
   }
 }
 
+write.csv(bias, '/data/raw/bias.csv')
+
 weights <- matrix(0, nrow = length(unique(subpolls[,"pollster"])), ncol = 1)
 rownames(weights) <- pollster
 colnames(weights) <- c("Weight")

@@ -1,6 +1,6 @@
 genbaltrack <- subset(read.csv('/data/raw/genbaltrack.csv'),
                       select = c(-ELAPSED, -RECWGT, -TOTWGT))
-dates <- seq(as.Date("2022-01-01"), Sys.Date(), "days")
+dates <- seq(as.Date("2022-01-01"), as.Date("2022-11-08"), "days")
 tracker <- matrix(0, nrow = length(dates), ncol = 3)
 colnames(tracker) <- c("DPCT", "RPCT", "MARGIN")
 
