@@ -3,14 +3,14 @@ library(leaflet)
 library(rgdal)
 library(ggplot2)
 
-senateseats <- readOGR('/data.processed/22senateseats.shp', 
+senateseats <- readOGR('data/processed/22senateseats.shp', 
                        layer = "22senateseats")
-probs <- read.csv('/data/processed/probs.csv')
-wholesenprob <- read.csv('/data/processed/wholesenprob.csv')
-hist <- read.csv('/data/processed/hist.csv')
+probs <- read.csv('data/processed/probs.csv')
+wholesenprob <- read.csv('data/processed/wholesenprob.csv')
+hist <- read.csv('data/processed/hist.csv')
 seats <- hist$Var1
 freq <- hist$Prop
-tracker <- read.csv('/data/processed/tracker.csv')
+tracker <- read.csv('data/processed/tracker.csv')
 dates <- seq(from = as.Date("2022-01-01"), by = "days", length.out = nrow(tracker))
 DPCT <- tracker$DPCT
 RPCT <- tracker$RPCT

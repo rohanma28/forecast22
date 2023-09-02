@@ -1,4 +1,4 @@
-genbaltrack <- subset(read.csv('/data/raw/genbaltrack.csv'),
+genbaltrack <- subset(read.csv('data/raw/genbaltrack.csv'),
                       select = c(-ELAPSED, -RECWGT, -TOTWGT))
 dates <- seq(as.Date("2022-01-01"), as.Date("2022-11-08"), "days")
 tracker <- matrix(0, nrow = length(dates), ncol = 3)
@@ -18,7 +18,7 @@ for (i in 1:length(dates)) {
   tracker[i,"MARGIN"] <- tracker[i,"DPCT"] - tracker[i,"RPCT"]
 }
 
-write.csv(tracker, '/data/processed/tracker.csv')
+write.csv(tracker, 'data/processed/tracker.csv')
 
 x <- dates
 y1 <- tracker[, "DPCT"]
