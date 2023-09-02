@@ -1,9 +1,9 @@
 library("Hmisc")
 library("SuppDists")
 
-polls <- read.csv('/Users/rohanathreya/Projects/polls.csv')
-bias <- read.csv('/Users/rohanathreya/Projects/bias.csv')
-weights <- read.csv('/Users/rohanathreya/Projects/weights.csv')
+polls <- read.csv('/data/raw/polls.csv')
+bias <- read.csv('/data/raw/bias.csv')
+weights <- read.csv('/data/raw/weights.csv')
 
 seats <- c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "FL", "GA",
            "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "MD",
@@ -69,9 +69,9 @@ polls$REPUBLICAN <- (polls$REP1PCT + polls$REP2PCT + polls$REP3PCT) + (polls$BIA
 polls$REPUBLICAN <- ifelse (polls$REPUBLICAN > 100, 100, polls$REPUBLICAN)
 polls$REPUBLICAN <- ifelse (polls$REPUBLICAN < 0, 0, polls$REPUBLICAN)
 
-genbal <- read.csv('/Users/rohanathreya/Projects/genbal.csv')
-genbalbias <- read.csv('/Users/rohanathreya/Projects/genbalbias.csv')
-gbweights <- read.csv('/Users/rohanathreya/Projects/gbweights.csv')
+genbal <- read.csv('/data/raw/genbal.csv')
+genbalbias <- read.csv('/data/raw/genbalbias.csv')
+gbweights <- read.csv('/data/raw/gbweights.csv')
 
 rownames(genbalbias) <- c(genbalbias[,1])
 rownames(gbweights) <- gbweights[,1]
@@ -132,9 +132,9 @@ DPCTGB <- sum(genbalrec$DEMOCRATIC*genbalrec$TOTWGT)/sum(genbalrec$TOTWGT)
 RPCTGB <- sum(genbalrec$REPUBLICAN*genbalrec$TOTWGT)/sum(genbalrec$TOTWGT)
 marginGB <- DPCTGB - RPCTGB
 
-write.csv(genbal, '/Users/rohanathreya/Projects/genbaltrack.csv')
+write.csv(genbal, '/data/raw/genbaltrack.csv')
 
-correlation <- read.csv('/Users/rohanathreya/Projects/correlation.csv')
+correlation <- read.csv('/data/raw/correlation.csv')
 rownames(correlation) <- correlation[,1]
 correlation <- correlation[,-1]
 means <- rowMeans(correlation)
@@ -151,7 +151,7 @@ for (i in 1:nrow(correlation)) {
   }
 }
 
-partisanlean <- read.csv('/Users/rohanathreya/Projects/partisanlean.csv')
+partisanlean <- read.csv('/data/raw/partisanlean.csv')
 rownames(partisanlean) <- partisanlean[,1]
 pvi <- matrix(0, nrow = 35, ncol = 35)
 rownames(pvi) <- seats
@@ -238,7 +238,7 @@ for (i in 1:nrow(pvi)) {
 
 corrfund <- apply(corradj, 1, sum) / apply(corr,1,sum)
 
-overperf <- read.csv('/Users/rohanathreya/Projects/overperf.csv')
+overperf <- read.csv('/data/raw/overperf.csv')
 
 rownames(overperf) <- overperf$STATE
 
@@ -340,6 +340,6 @@ hist <- data.frame(table(results$dsenseats))
 hist$Prop <- hist$Freq/1000
 hist <- hist[,-2]
 
-write.csv(hist, '/Users/rohanathreya/Projects/AthreyaForecast/hist.csv')
-write.csv(probs, '/Users/rohanathreya/Projects/AthreyaForecast/probs.csv')
-write.csv(wholesenprob, '/Users/rohanathreya/Projects/AthreyaForecast/wholesenprob.csv')
+write.csv(hist, '/data/processed/hist.csv')
+write.csv(probs, 'data/processed/probs.csv')
+write.csv(wholesenprob, '/data/processed/wholesenprob.csv')

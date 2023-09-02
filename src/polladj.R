@@ -1,8 +1,8 @@
-polls <- read.csv('/Users/rohanathreya/Projects/raw-polls.csv')
+polls <- read.csv('/data/raw/raw-polls.csv')
 subpolls <- subset(polls, year >= 2016 & type_simple != 'Pres-P' & 
                      type_simple != 'House-G' & location != 'US')
 
-correlation <- read.csv('/Users/rohanathreya/Projects/Correlation.csv')
+correlation <- read.csv('/data/raw/correlation.csv')
 
 state <- c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI",
            "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI",
@@ -108,7 +108,7 @@ for (i in 1:length(pollster)) {
     }
 }
 
-write.csv(weights,'/Users/rohanathreya/Projects/weights.csv')
+write.csv(weights,'/data/raw/weights.csv')
 
 genbalpolls <- subset(polls, year >= 2016 & location == 'US')
 
@@ -148,6 +148,6 @@ for (i in 1:length(genbalpollsters)) {
   }
 }
 
-write.csv(gbweights,'/Users/rohanathreya/Projects/gbweights.csv')
+write.csv(gbweights,'/data/raw/gbweights.csv')
 
-write.csv(uspoll, '/Users/rohanathreya/Projects/genbalbias.csv')
+write.csv(uspoll, '/data/raw/genbalbias.csv')
